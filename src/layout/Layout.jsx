@@ -7,6 +7,8 @@ const Layout = () => {
         <Stack
             alignItems="center"
             bgImage={"url('https://source.unsplash.com/EZrVFJUysLk')"}
+            bgPosition="center"
+            bgSize="cover"
             height="100%"
             justifyContent={"center"}
         >
