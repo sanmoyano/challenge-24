@@ -22,11 +22,12 @@ const ListaDeRegalos = () => {
     //ESTADOS
     const [arrayItems, setArrayItems] = useState([]);
     const [input, setInput] = useState("");
+    const [cantidad, setCantidad] = useState(0);
     //OBJETO
     const item = {
         id: arrayItems.length + 1,
         name: input,
-        cantidad: 1,
+        cantidad: cantidad,
     };
 
     //FUNCIONES
@@ -71,7 +72,7 @@ const ListaDeRegalos = () => {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
-                        <Contador cantidad={item.cantidad} />
+                        <Contador cantidad={item.cantidad} setCantidad={setCantidad} />
                         <Button onClick={addItem}>Add</Button>
                     </Stack>
                 </FormControl>

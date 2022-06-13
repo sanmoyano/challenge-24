@@ -29,7 +29,7 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
     return (
         <Stack {...listStack}>
             {arrayItems.length === 0 ? (
-                <Text>Todavia no se agregaron items. Agrega algo!</Text>
+                <Text>No hay items. Agrega alguno!</Text>
             ) : (
                 <UnorderedList {...listMapStack}>
                     {arrayItems.map((item) => (
@@ -37,14 +37,14 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
                             key={item.id}
                             id={item.id}
                             name={item.name}
-                            remove={(id) => {
-                                setArrayItems(arrayItems.filter((item) => item.id !== id));
-                            }}
+                            remove={(id) =>
+                                setArrayItems(arrayItems.filter((item) => item.id !== id))
+                            }
                         />
                     ))}
                 </UnorderedList>
             )}
-            <Button onClick={removeAll}>Eliminar todo</Button>
+            <Button onClick={removeAll}> Eliminar todo</Button>
         </Stack>
     );
 };
