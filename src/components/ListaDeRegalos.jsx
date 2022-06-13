@@ -1,4 +1,4 @@
-import { Button, FormControl, Input, Stack } from "@chakra-ui/react";
+import { Button, FormControl, Input, Stack, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 
 import RegalosList from "./RegalosList";
@@ -16,16 +16,49 @@ const ListaDeRegalos = () => {
         opacity: 0.9,
         p: 6,
     };
+    const toast = useToast();
 
     //ESTADOS
     const [arrayItems, setArrayItems] = useState([]);
     const [input, setInput] = useState("");
 
+    //OBJETO
+    const item = {
+        id: Math.random(),
+        name: input,
+        imagen: "",
+    };
+
     //FUNCIONES
     const addItem = (e) => {
         e.preventDefault();
-        setArrayItems([...arrayItems, { name: input, id: arrayItems.length }]);
-        setInput("");
+        if (input === "") {
+            toast({
+                title: "Error",
+                description: "El campo no puede estar vacio",
+                status: "warning",
+                duration: 2000,
+                isClosable: true,
+            });
+        } else if (arrayItems.find((item) => item.name === input)) {
+            toast({
+                title: "Error",
+                description: "El item ya existe",
+                status: "error",
+                duration: 2000,
+                isClosable: true,
+            });
+        } else {
+            setArrayItems([...arrayItems, item]);
+            setInput("");
+            toast({
+                title: "Exito",
+                description: "El item se agrego correctamente",
+                status: "success",
+                duration: 2000,
+                isClosable: true,
+            });
+        }
     };
 
     return (
