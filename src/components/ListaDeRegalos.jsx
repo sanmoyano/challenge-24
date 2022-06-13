@@ -27,7 +27,7 @@ const ListaDeRegalos = () => {
     const item = {
         id: arrayItems.length + 1,
         name: input,
-        cantidad: cantidad,
+        cantidad: Number(cantidad),
     };
 
     //FUNCIONES
