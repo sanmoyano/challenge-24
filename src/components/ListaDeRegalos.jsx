@@ -1,4 +1,4 @@
-import { Button, FormControl, Input, ListItem, Stack, Text, UnorderedList } from "@chakra-ui/react";
+import { Button, FormControl, Input, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 
 import RegalosList from "./RegalosList";

@@ -1,4 +1,4 @@
-import { Button, ListItem, Stack, Text, useDisclosure, ScaleFade } from "@chakra-ui/react";
+import { Button, ListItem, Stack, Text } from "@chakra-ui/react";
 
 const Regalos = ({ name, remove, id }) => {
     const listItemStack = {

@@ -1,4 +1,4 @@
-import { Button, Stack, Text, UnorderedList, useDisclosure, ScaleFade } from "@chakra-ui/react";
+import { Button, Stack, Text, UnorderedList } from "@chakra-ui/react";
 
 import Regalos from "./Regalos";
 
@@ -23,7 +23,6 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
     const removeAll = () => {
         setArrayItems([]);
     };
-
 
     return (
         <Stack {...listStack}>
