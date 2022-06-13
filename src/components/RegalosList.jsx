@@ -3,6 +3,7 @@ import { Button, Stack, Text, UnorderedList } from "@chakra-ui/react";
 import Regalos from "./Regalos";
 
 const RegalosList = ({ arrayItems, setArrayItems }) => {
+    //CONFIGURACIONES
     const listStack = {
         alignItems: "center",
         bgColor: "gray.900",
@@ -20,6 +21,7 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
         width: "100%",
     };
 
+    //FUNCIONES
     const removeAll = () => {
         setArrayItems([]);
     };

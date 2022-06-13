@@ -2,6 +2,7 @@ import { Button, FormControl, Input, Stack, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 
 import RegalosList from "./RegalosList";
+import Contador from "./Contador";
 
 const ListaDeRegalos = () => {
     //CONFIGURACIONES
@@ -21,12 +22,11 @@ const ListaDeRegalos = () => {
     //ESTADOS
     const [arrayItems, setArrayItems] = useState([]);
     const [input, setInput] = useState("");
-
     //OBJETO
     const item = {
-        id: Math.random(),
+        id: arrayItems.length + 1,
         name: input,
-        imagen: "",
+        cantidad: 1,
     };
 
     //FUNCIONES
@@ -36,7 +36,7 @@ const ListaDeRegalos = () => {
             toast({
                 title: "Error",
                 description: "El campo no puede estar vacio",
-                status: "warning",
+                status: "error",
                 duration: 2000,
                 isClosable: true,
             });
@@ -44,7 +44,7 @@ const ListaDeRegalos = () => {
             toast({
                 title: "Error",
                 description: "El item ya existe",
-                status: "error",
+                status: "warning",
                 duration: 2000,
                 isClosable: true,
             });
@@ -64,18 +64,18 @@ const ListaDeRegalos = () => {
     return (
         <>
             <Stack {...formStack}>
-                <FormControl as="form" onSubmit={addItem}>
-                    <Stack direction={"row"} spacing={6}>
+                <FormControl as={"form"} onSubmit={addItem}>
+                    <Stack alignItems="center" direction={"row"} spacing={6}>
                         <Input
-                            placeholder="Agregar item..."
+                            placeholder="Agrega un intem..."
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
-                        <Button onClick={addItem}>Agregar</Button>
+                        <Contador cantidad={item.cantidad} />
+                        <Button onClick={addItem}>Add</Button>
                     </Stack>
                 </FormControl>
             </Stack>
-
             <RegalosList arrayItems={arrayItems} setArrayItems={setArrayItems} />
         </>
     );
