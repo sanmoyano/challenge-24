@@ -1,4 +1,4 @@
-import { Button, ListItem, Stack, Text } from "@chakra-ui/react";
+import { Button, ListItem, Stack, Text, useDisclosure, ScaleFade } from "@chakra-ui/react";
 
 const Regalos = ({ name, remove, id }) => {
     const listItemStack = {
@@ -7,6 +7,9 @@ const Regalos = ({ name, remove, id }) => {
         justifyContent: "space-between",
         spacing: 6,
         width: "100%",
+        bgColor: "gray.700",
+        borderRadius: "lg",
+        p: 2,
     };
 
     return (

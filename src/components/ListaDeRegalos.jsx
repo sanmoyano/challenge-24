@@ -21,8 +21,9 @@ const ListaDeRegalos = () => {
     const [arrayItems, setArrayItems] = useState([]);
     const [input, setInput] = useState("");
 
+    //FUNCIONES
     const addItem = (e) => {
-        e.preventDefault(e);
+        e.preventDefault();
         setArrayItems([...arrayItems, { name: input, id: arrayItems.length }]);
         setInput("");
     };
@@ -37,10 +38,11 @@ const ListaDeRegalos = () => {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
-                        <Button onClick={addItem}>Add</Button>
+                        <Button onClick={addItem}>Agregar</Button>
                     </Stack>
                 </FormControl>
             </Stack>
+
             <RegalosList arrayItems={arrayItems} setArrayItems={setArrayItems} />
         </>
     );
