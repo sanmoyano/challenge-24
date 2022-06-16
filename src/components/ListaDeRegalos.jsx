@@ -1,5 +1,5 @@
 import { Button, FormControl, Input, Stack, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import RegalosList from "./RegalosList";
 import Contador from "./Contador";
@@ -22,12 +22,13 @@ const ListaDeRegalos = () => {
     //ESTADOS
     const [arrayItems, setArrayItems] = useState([]);
     const [input, setInput] = useState("");
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
+
     //OBJETO
     const item = {
         id: arrayItems.length + 1,
         name: input,
-        cantidad: Number(cantidad),
+        cantidad: cantidad,
     };
 
     //FUNCIONES
@@ -36,7 +37,7 @@ const ListaDeRegalos = () => {
         if (input === "") {
             toast({
                 title: "Error",
-                description: "El campo no puede estar vacio",
+                description: "El item no puede estar vacio",
                 status: "error",
                 duration: 2000,
                 isClosable: true,
@@ -45,7 +46,7 @@ const ListaDeRegalos = () => {
             toast({
                 title: "Error",
                 description: "El item ya existe",
-                status: "warning",
+                status: "warnign",
                 duration: 2000,
                 isClosable: true,
             });
@@ -53,7 +54,7 @@ const ListaDeRegalos = () => {
             setArrayItems([...arrayItems, item]);
             setInput("");
             toast({
-                title: "Exito",
+                title: "Item agregado",
                 description: "El item se agrego correctamente",
                 status: "success",
                 duration: 2000,
@@ -62,17 +63,29 @@ const ListaDeRegalos = () => {
         }
     };
 
+    useEffect(() => {
+        const data = localStorage.getItem("items");
+
+        if (data) {
+            setArrayItems(JSON.parse(data));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(arrayItems));
+    }, [arrayItems]);
+
     return (
         <>
             <Stack {...formStack}>
                 <FormControl as={"form"} onSubmit={addItem}>
-                    <Stack alignItems="center" direction={"row"} spacing={6}>
+                    <Stack alignItems={"center"} direction={"row"}>
                         <Input
-                            placeholder="Agrega un intem..."
+                            placeholder={"Agregar item..."}
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
-                        <Contador cantidad={item.cantidad} setCantidad={setCantidad} />
+                        <Contador cantidad={cantidad} setCantidad={setCantidad} />
                         <Button onClick={addItem}>Add</Button>
                     </Stack>
                 </FormControl>

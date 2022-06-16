@@ -6,7 +6,7 @@ const Contador = ({ cantidad, setCantidad }) => {
     };
 
     const restar = () => {
-        if (cantidad > 0) {
+        if (cantidad > 1) {
             setCantidad(cantidad - 1);
         }
     };

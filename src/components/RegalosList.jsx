@@ -35,6 +35,7 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
                     {arrayItems.map((item) => (
                         <Regalos
                             key={item.id}
+                            cantidad={item.cantidad}
                             id={item.id}
                             name={item.name}
                             remove={(id) =>

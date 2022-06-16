@@ -6,10 +6,12 @@ import App from "./App";
 import theme from "./theme/theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    <>
+        {/* <React.StrictMode>  para poder usar el LocalStorage tiene que estar oculto */}
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <ChakraProvider theme={theme}>
             <App />
         </ChakraProvider>
-    </React.StrictMode>,
+        {/* </React.StrictMode>, */}
+    </>,
 );
