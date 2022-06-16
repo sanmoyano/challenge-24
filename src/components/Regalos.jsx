@@ -1,6 +1,6 @@
-import { Button, ListItem, Stack, Text } from "@chakra-ui/react";
+import { Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
 
-const Regalos = ({ name, remove, id, cantidad }) => {
+const Regalos = ({ name, remove, id, cantidad, image }) => {
     const listItemStack = {
         alignItems: "center",
         direction: "row",
@@ -15,6 +15,7 @@ const Regalos = ({ name, remove, id, cantidad }) => {
     return (
         <ListItem>
             <Stack {...listItemStack}>
+                <Image src={image} />
                 <Text>{name}</Text>
                 <Text>{cantidad}</Text>
                 <Button onClick={() => remove(id)}>x</Button>
