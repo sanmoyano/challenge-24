@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import RegalosList from "./RegalosList";
 import Contador from "./Contador";
+import Drawer from "./Drawer";
 
 const ListaDeRegalos = () => {
     //CONFIGURACIONES
@@ -24,6 +25,7 @@ const ListaDeRegalos = () => {
     const [input, setInput] = useState("");
     const [cantidad, setCantidad] = useState(1);
     const [image, setImage] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     //OBJETO
     const item = {
@@ -59,6 +61,10 @@ const ListaDeRegalos = () => {
         }
     };
 
+    const openDrawer = () => {
+        setIsOpen(!isOpen);
+    };
+
     //SET LOCALSTORAGE -> hay que borrar/comentar el React.StrictMode del main.jsx para que funcione
     useEffect(() => {
         const datos = localStorage.getItem("arrayItems");
@@ -74,6 +80,9 @@ const ListaDeRegalos = () => {
 
     return (
         <>
+            <Button onClick={openDrawer}>Agregar items</Button>
+            <Drawer open={isOpen} />
+
             <Stack {...formStack}>
                 <FormControl as="form" onSubmit={addItem}>
                     <Stack alignItems="center" direction={"row"}>

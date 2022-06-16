@@ -17,7 +17,7 @@ const Contador = ({ cantidad, setCantidad }) => {
             <Input
                 type={"number"}
                 value={cantidad}
-                width={"50px"}
+                width={"70px"}
                 onChange={(e) => setCantidad(e.target.value)}
             />
             <Button onClick={restar}>-</Button>
