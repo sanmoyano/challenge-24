@@ -80,11 +80,13 @@ const ListaDeRegalos = () => {
                         <Input
                             placeholder="Agregar item..."
                             value={input}
+                            width={"auto"}
                             onChange={(e) => setInput(e.target.value)}
                         />
                         <Input
                             placeholder="Agregar url imagen..."
                             value={image}
+                            width={"auto"}
                             onChange={(e) => setImage(e.target.value)}
                         />
                         <Contador cantidad={cantidad} setCantidad={setCantidad} />

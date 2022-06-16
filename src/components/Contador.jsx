@@ -15,9 +15,9 @@ const Contador = ({ cantidad, setCantidad }) => {
         <Stack alignItems={"center"} direction={"row"} spacing={1}>
             <Button onClick={sumar}>+</Button>
             <Input
-                as="input"
                 type={"number"}
                 value={cantidad}
+                width={"50px"}
                 onChange={(e) => setCantidad(e.target.value)}
             />
             <Button onClick={restar}>-</Button>
