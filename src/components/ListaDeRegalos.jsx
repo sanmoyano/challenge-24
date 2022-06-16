@@ -20,77 +20,23 @@ const ListaDeRegalos = () => {
     const toast = useToast();
 
     //ESTADOS
-    const [arrayItems, setArrayItems] = useState([]);
-    const [input, setInput] = useState("");
-    const [cantidad, setCantidad] = useState(1);
+
 
     //OBJETO
-    const item = {
-        id: arrayItems.length + 1,
-        name: input,
-        cantidad: cantidad,
-    };
+
 
     //FUNCIONES
-    const addItem = (e) => {
-        e.preventDefault();
-        if (input === "") {
-            toast({
-                title: "Error",
-                description: "El item no puede estar vacio",
-                status: "error",
-                duration: 2000,
-                isClosable: true,
-            });
-        } else if (arrayItems.find((item) => item.name === input)) {
-            toast({
-                title: "Error",
-                description: "El item ya existe",
-                status: "warnign",
-                duration: 2000,
-                isClosable: true,
-            });
-        } else {
-            setArrayItems([...arrayItems, item]);
-            setInput("");
-            toast({
-                title: "Item agregado",
-                description: "El item se agrego correctamente",
-                status: "success",
-                duration: 2000,
-                isClosable: true,
-            });
-        }
-    };
 
-    useEffect(() => {
-        const data = localStorage.getItem("items");
 
-        if (data) {
-            setArrayItems(JSON.parse(data));
-        }
-    }, []);
+    //SET LOCALSTORAGE -> hay que borrar/comentar el React.StrictMode del main.jsx para que funcione
 
-    useEffect(() => {
-        localStorage.setItem("items", JSON.stringify(arrayItems));
-    }, [arrayItems]);
 
     return (
         <>
             <Stack {...formStack}>
-                <FormControl as={"form"} onSubmit={addItem}>
-                    <Stack alignItems={"center"} direction={"row"}>
-                        <Input
-                            placeholder={"Agregar item..."}
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                        />
-                        <Contador cantidad={cantidad} setCantidad={setCantidad} />
-                        <Button onClick={addItem}>Add</Button>
-                    </Stack>
-                </FormControl>
+
             </Stack>
-            <RegalosList arrayItems={arrayItems} setArrayItems={setArrayItems} />
+            <RegalosList  />
         </>
     );
 };
