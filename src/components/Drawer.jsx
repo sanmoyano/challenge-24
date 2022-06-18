@@ -1,20 +1,9 @@
 import { Button, FormControl, Input, Stack, Text, useToast } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Contador from "./Contador";
 
-const Drawer = ({
-    arrayItems,
-    cantidad,
-    image,
-    input,
-    open,
-    setArrayItems,
-    setCantidad,
-    setImage,
-    setInput,
-}) => {
+const Drawer = ({ arrayItems, open, setArrayItems }) => {
     //CONFIGURACIONES
     const formStack = {
         alignItems: "center",
@@ -28,12 +17,18 @@ const Drawer = ({
         p: 6,
     };
     const toast = useToast();
+    //ESTADOS
+    const [input, setInput] = useState("");
+    const [cantidad, setCantidad] = useState(1);
+    const [image, setImage] = useState("");
+    const [destinatario, setDestinatario] = useState("");
 
     //OBJETO
     const item = {
         id: Math.floor(Math.random() * 100),
         name: input,
         cantidad: cantidad,
+        destinatario: destinatario,
         image: image,
     };
     //FUNCIONES
@@ -60,6 +55,7 @@ const Drawer = ({
             setInput("");
             setCantidad(1);
             setImage("");
+            setDestinatario("");
         }
     };
 
@@ -79,7 +75,7 @@ const Drawer = ({
     return (
         <Stack {...formStack} display={open ? "flex" : "none"}>
             <FormControl as="form" onSubmit={addItem}>
-                <Stack alignItems="center" direction={"row"}>
+                <Stack alignItems="center">
                     <Input
                         placeholder="Agregar item..."
                         value={input}
@@ -87,13 +83,21 @@ const Drawer = ({
                         onChange={(e) => setInput(e.target.value)}
                     />
                     <Input
+                        placeholder="Destinatario..."
+                        value={destinatario}
+                        width={"auto"}
+                        onChange={(e) => setDestinatario(e.target.value)}
+                    />
+                    <Input
                         placeholder="Agregar url imagen..."
                         value={image}
                         width={"auto"}
                         onChange={(e) => setImage(e.target.value)}
                     />
-                    <Contador cantidad={cantidad} setCantidad={setCantidad} />
-                    <Button onClick={addItem}>Add</Button>
+                    <Stack direction={"row"}>
+                        <Contador cantidad={cantidad} setCantidad={setCantidad} />
+                        <Button onClick={addItem}>Add</Button>
+                    </Stack>
                 </Stack>
             </FormControl>
         </Stack>

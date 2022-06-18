@@ -9,9 +9,6 @@ const ListaDeRegalos = () => {
     //ESTADOS
     const [isOpen, setIsOpen] = useState(false);
     const [arrayItems, setArrayItems] = useState([]);
-    const [input, setInput] = useState("");
-    const [cantidad, setCantidad] = useState(1);
-    const [image, setImage] = useState("");
 
     const openDrawer = () => {
         setIsOpen(!isOpen);
@@ -27,17 +24,7 @@ const ListaDeRegalos = () => {
         >
             <Button onClick={openDrawer}>Agregar items</Button>
             <ScaleFade in={isOpen} initialScale={0.9}>
-                <Drawer
-                    arrayItems={arrayItems}
-                    cantidad={cantidad}
-                    image={image}
-                    input={input}
-                    open={isOpen}
-                    setArrayItems={setArrayItems}
-                    setCantidad={setCantidad}
-                    setImage={setImage}
-                    setInput={setInput}
-                />
+                <Drawer arrayItems={arrayItems} open={isOpen} setArrayItems={setArrayItems} />
             </ScaleFade>
             <RegalosList arrayItems={arrayItems} setArrayItems={setArrayItems} />
         </Stack>

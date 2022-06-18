@@ -39,6 +39,7 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
                                 <Regalos
                                     key={item.id}
                                     cantidad={item.cantidad}
+                                    destinatario={item.destinatario}
                                     id={item.id}
                                     image={item.image}
                                     name={item.name}
