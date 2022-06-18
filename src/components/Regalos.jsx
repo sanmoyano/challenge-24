@@ -1,4 +1,5 @@
-import { Box, Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
+import { Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 const Regalos = ({ name, remove, id, cantidad, image }) => {
     const listItemStack = {
@@ -13,11 +14,19 @@ const Regalos = ({ name, remove, id, cantidad, image }) => {
     };
 
     return (
-        <ListItem>
-            <Stack {...listItemStack}>
+        <ListItem width={"100%"}>
+            <Stack
+                {...listItemStack}
+                animate={{ opacity: 1 }}
+                as={motion.div}
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
+                layoutId={`${id}`}
+                transition={{ duration: 1 }}
+            >
                 <Image boxSize={"50px"} objectFit="cover" src={image} />
                 <Text>{name}</Text>
-                <Text>{cantidad}</Text>
+                <Text>x{cantidad}</Text>
                 <Button onClick={() => remove(id)}>x</Button>
             </Stack>
         </ListItem>

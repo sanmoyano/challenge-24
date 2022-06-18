@@ -9,7 +9,7 @@ const Layout = () => {
             bgImage={"url('https://source.unsplash.com/EZrVFJUysLk')"}
             bgPosition="center"
             bgSize="cover"
-            height="100%"
+            height={{ base: "none", sm: "100%" }}
             justifyContent={"center"}
         >
             <ListaDeRegalos />
