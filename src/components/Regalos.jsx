@@ -1,5 +1,8 @@
 import { Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+
+import EditRegalo from "./EditRegalo";
 
 const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
     const listItemStack = {
@@ -11,6 +14,12 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
         bgColor: "gray.700",
         borderRadius: "lg",
         p: 4,
+    };
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openEdit = () => {
+        setIsOpen(!isOpen);
     };
 
     return (
@@ -30,6 +39,15 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
                     <Text opacity={0.5}>{destinatario}</Text>
                 </Stack>
                 <Text>x{cantidad}</Text>
+                <Button onClick={openEdit}>Edit</Button>
+                <Stack display={isOpen ? "flex" : "none"} position={"absolute"} heigth={"100%"}>
+                    <EditRegalo
+                        cantidad={cantidad}
+                        destinatario={destinatario}
+                        img={image}
+                        name={name}
+                    />
+                </Stack>
                 <Button onClick={() => remove(id)}>x</Button>
             </Stack>
         </ListItem>

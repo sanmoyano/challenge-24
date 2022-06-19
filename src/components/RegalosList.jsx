@@ -1,5 +1,5 @@
-import { Button, ListItem, Stack, Text, List } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Button, Stack, Text, List } from "@chakra-ui/react";
+import { AnimatePresence } from "framer-motion";
 
 import Regalos from "./Regalos";
 

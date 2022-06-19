@@ -1,4 +1,4 @@
-import { Button, FormControl, Input, Stack, Text, useToast } from "@chakra-ui/react";
+import { Button, FormControl, Input, Stack, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import Contador from "./Contador";
