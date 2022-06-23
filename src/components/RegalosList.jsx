@@ -1,9 +1,12 @@
 import { Button, Stack, Text, List } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
+import { useContext } from "react";
+
+import { DataContext } from "../context/DataProvider";
 
 import Regalos from "./Regalos";
 
-const RegalosList = ({ arrayItems, setArrayItems }) => {
+const RegalosList = () => {
     //CONFIGURACIONES
     const listStack = {
         alignItems: "center",
@@ -21,7 +24,8 @@ const RegalosList = ({ arrayItems, setArrayItems }) => {
         spacing: 2,
         width: "100%",
     };
-
+    //CONTEXT
+    const { arrayItems, setArrayItems } = useContext(DataContext);
     //FUNCIONES
     const removeAll = () => {
         setArrayItems([]);

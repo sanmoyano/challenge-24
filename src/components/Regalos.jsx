@@ -40,7 +40,7 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
                 </Stack>
                 <Text>x{cantidad}</Text>
                 <Button onClick={openEdit}>Edit</Button>
-                <Stack display={isOpen ? "flex" : "none"} position={"absolute"} heigth={"100%"}>
+                <Stack display={isOpen ? "flex" : "none"} heigth={"100%"} position={"absolute"}>
                     <EditRegalo
                         cantidad={cantidad}
                         destinatario={destinatario}

@@ -8,8 +8,6 @@ import Drawer from "./Drawer";
 const ListaDeRegalos = () => {
     //ESTADOS
     const [isOpen, setIsOpen] = useState(false);
-    const [arrayItems, setArrayItems] = useState([]);
-
     const openDrawer = () => {
         setIsOpen(!isOpen);
     };
@@ -24,9 +22,9 @@ const ListaDeRegalos = () => {
         >
             <Button onClick={openDrawer}>Agregar items</Button>
             <ScaleFade in={isOpen} initialScale={0.9}>
-                <Drawer arrayItems={arrayItems} open={isOpen} setArrayItems={setArrayItems} />
+                <Drawer open={isOpen} />
             </ScaleFade>
-            <RegalosList arrayItems={arrayItems} setArrayItems={setArrayItems} />
+            <RegalosList />
         </Stack>
     );
 };
