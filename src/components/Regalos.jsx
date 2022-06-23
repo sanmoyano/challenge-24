@@ -1,6 +1,6 @@
-import { Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
+import { Button, Image, Input, ListItem, Stack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useContex, useState } from "react";
 
 import { DataContext } from "../context/DataProvider";
 
@@ -16,7 +16,14 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
         p: 4,
     };
 
-    const { drawerEdit } = useContext(DataContext);
+    const { arrayItems, setArrayItems, setInput } = useContex(DataContext);
+
+    const [editTrue, setEditTrue] = useState(false);
+
+    const edit = (id) => {
+        setEditTrue(!editTrue);
+        console.log(name, cantidad, destinatario);
+    };
 
     return (
         <ListItem width={"100%"}>
@@ -35,7 +42,15 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
                     <Text opacity={0.5}>{destinatario}</Text>
                 </Stack>
                 <Text>x{cantidad}</Text>
-                <Button onClick={drawerEdit}>Edit</Button>
+                <Button onClick={() => edit(id)}>Edit</Button>
+                {editTrue ? (
+                    <Input
+                        placeholder="Nombre"
+                        value={name}
+                        onChange={(e) => console.log(e.target.value)}
+                    />
+                ) : null}
+
                 <Button onClick={() => remove(id)}>x</Button>
             </Stack>
         </ListItem>
