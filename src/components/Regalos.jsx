@@ -1,8 +1,8 @@
 import { Button, Image, ListItem, Stack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useContext } from "react";
 
-import EditRegalo from "./EditRegalo";
+import { DataContext } from "../context/DataProvider";
 
 const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
     const listItemStack = {
@@ -16,11 +16,7 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
         p: 4,
     };
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openEdit = () => {
-        setIsOpen(!isOpen);
-    };
+    const { drawerEdit } = useContext(DataContext);
 
     return (
         <ListItem width={"100%"}>
@@ -39,15 +35,7 @@ const Regalos = ({ name, remove, id, cantidad, image, destinatario }) => {
                     <Text opacity={0.5}>{destinatario}</Text>
                 </Stack>
                 <Text>x{cantidad}</Text>
-                <Button onClick={openEdit}>Edit</Button>
-                <Stack display={isOpen ? "flex" : "none"} heigth={"100%"} position={"absolute"}>
-                    <EditRegalo
-                        cantidad={cantidad}
-                        destinatario={destinatario}
-                        img={image}
-                        name={name}
-                    />
-                </Stack>
+                <Button onClick={drawerEdit}>Edit</Button>
                 <Button onClick={() => remove(id)}>x</Button>
             </Stack>
         </ListItem>

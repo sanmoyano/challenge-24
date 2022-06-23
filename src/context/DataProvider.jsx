@@ -15,6 +15,7 @@ const DataProvider = ({ children }) => {
     const [cantidad, setCantidad] = useState(1);
     const [image, setImage] = useState("");
     const [destinatario, setDestinatario] = useState("");
+    const [openEdit, setOpenEdit] = useState(false);
 
     //OBJETO
     const item = {
@@ -66,6 +67,19 @@ const DataProvider = ({ children }) => {
         }
     };
 
+    const editItem = (id) => {
+        const item = arrayItems.find((item) => item.id === id);
+
+        setInput(item.name);
+        setCantidad(item.cantidad);
+        setImage(item.image);
+        setDestinatario(item.destinatario);
+    };
+
+    const drawerEdit = () => {
+        setOpenEdit(!openEdit);
+    };
+
     const contextValue = {
         arrayItems,
         setArrayItems,
@@ -78,6 +92,9 @@ const DataProvider = ({ children }) => {
         destinatario,
         setDestinatario,
         addItem,
+        drawerEdit,
+        openEdit,
+        editItem,
     };
 
     return <Provider value={contextValue}>{children}</Provider>;

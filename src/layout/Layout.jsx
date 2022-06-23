@@ -1,6 +1,7 @@
 import { Stack } from "@chakra-ui/react";
 
 import ListaDeRegalos from "../components/ListaDeRegalos";
+import DrawerEdit from "../components/DrawerEdit";
 
 const Layout = () => {
     return (
@@ -13,6 +14,7 @@ const Layout = () => {
             justifyContent={"center"}
         >
             <ListaDeRegalos />
+            <DrawerEdit />
         </Stack>
     );
 };
