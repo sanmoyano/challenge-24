@@ -1,6 +1,6 @@
 import { Stack } from "@chakra-ui/react";
 
-import ListaDeRegalos from "../components/ListaDeRegalos";
+import Inicio from "../components/Inicio";
 
 const Layout = () => {
     return (
@@ -8,11 +8,13 @@ const Layout = () => {
             alignItems="center"
             bgImage={"url('https://source.unsplash.com/EZrVFJUysLk')"}
             bgPosition="center"
+            bgRepeat="no-repeat"
             bgSize="cover"
-            height={{ base: "none", sm: "100%" }}
+            height="inherit"
             justifyContent={"center"}
+            p={12}
         >
-            <ListaDeRegalos />
+            <Inicio />
         </Stack>
     );
 };

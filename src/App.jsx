@@ -2,9 +2,9 @@ import Layout from "./layout/Layout";
 import DataProvider from "./context/DataProvider";
 const App = () => {
     return (
-        <DataProvider>
-            <Layout />
-        </DataProvider>
+        // <DataProvider>
+        <Layout />
+        // </DataProvider>
     );
 };
 

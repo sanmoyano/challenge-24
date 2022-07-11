@@ -7,17 +7,17 @@ const Contador = ({ cantidad, setCantidad }) => {
 
     const restar = () => {
         if (cantidad > 1) {
-            setCantidad(cantidad - 1);
+            setCantidad(Number(cantidad) - 1);
         }
     };
 
     return (
-        <Stack alignItems={"center"} direction={"row"} spacing={1}>
+        <Stack direction={"row"} justifyContent={"space-between"}>
             <Button onClick={sumar}>+</Button>
             <Input
-                type={"number"}
+                type="number"
                 value={cantidad}
-                width={"70px"}
+                width="60px"
                 onChange={(e) => setCantidad(e.target.value)}
             />
             <Button onClick={restar}>-</Button>
