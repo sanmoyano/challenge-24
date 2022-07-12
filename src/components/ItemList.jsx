@@ -1,14 +1,14 @@
-import { Button, Stack, Text } from "@chakra-ui/react";
+import { Button, Input, Stack, Text } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 import Item from "./Item";
 
 const ItemList = ({ items, setArrayItems }) => {
     //crear hooks de editar el primer valor va ser el id del item que estoy editando igual a null
-    const [editing, setEditing] = useState(null);
+    const [todoEditing, setTodoEditing] = useState(null);
     //hooks del input que quiero editar y el valor que quiero editar igual a un empty string
-    const [editInput, setEditInput] = useState("");
-    //crear funcion que reciba el id del item que quiero editar y me devuelva el item que quiero editar
+    const [editingInput, setEditingInput] = useState("");
 
     const handleClickRemoveAll = () => {
         setArrayItems([]);
@@ -18,6 +18,10 @@ const ItemList = ({ items, setArrayItems }) => {
         setArrayItems(items.filter((item) => item.id !== id));
     };
 
+    const handleClickEdit = (id) => {
+        setTodoEditing(id);
+    };
+
     return (
         <Stack bgColor={"gray.900"} borderRadius={"lg"} p={6} width="100%">
             {items.length === 0 ? (
@@ -25,15 +29,26 @@ const ItemList = ({ items, setArrayItems }) => {
             ) : (
                 <AnimatePresence>
                     {items.map((item) => (
-                        <Item
-                            key={item.id}
-                            cantidad={item.cantidad}
-                            destinatario={item.destinatario}
-                            id={item.id}
-                            img={item.img}
-                            name={item.nombre}
-                            removeItem={removeItem}
-                        />
+                        <Stack key={item.id}>
+                            {todoEditing === item.id ? (
+                                // Esto es un nuevo componente para crear EditItemComponent
+                                <Input
+                                    type={"text"}
+                                    value={editingInput}
+                                    onChange={(e) => setEditingInput(e.target.value)}
+                                />
+                            ) : (
+                                <Item
+                                    cantidad={item.cantidad}
+                                    destinatario={item.destinatario}
+                                    editItem={handleClickEdit}
+                                    id={item.id}
+                                    img={item.img}
+                                    name={item.nombre}
+                                    removeItem={removeItem}
+                                />
+                            )}
+                        </Stack>
                     ))}
                 </AnimatePresence>
             )}

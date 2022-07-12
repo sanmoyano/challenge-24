@@ -34,7 +34,7 @@ const Item = ({ name, destinatario, cantidad, img, id, removeItem, editItem }) =
                     <Text color={"gray.500"}>{destinatario}</Text>
                 </Stack>
                 <Text>x{cantidad}</Text>
-                <Button>
+                <Button onClick={() => editItem(id)}>
                     <Icon as={AiFillEdit} h={6} w={6} />
                 </Button>
                 <Button onClick={() => removeItem(id)}>
